@@ -1,0 +1,22 @@
+#linear linear algo lf+lf sinple operation
+#pero kaylangan pa din lf> rg pag terminate
+def f(a, i):
+      lf = 0
+      rg = len(a)-1
+      while lf <= rg:
+            m = int( (rg+ lf) /2)
+            print(f"L10 lf {lf}, m {m}, rg {rg}, i {i}\>
+            if i < a[m]:
+                  rg  = m-1
+            elif i > a[m]:
+                  lf = m+1
+            else:
+                  print(f"NAKITA: {i}")
+                  break
+      else:
+                  print(f"no find {i}")
+a =[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+print(a)
+print(f"input:  ", end= "")
+i= int( input())
+f(a,i)
