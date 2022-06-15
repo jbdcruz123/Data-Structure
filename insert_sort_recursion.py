@@ -1,19 +1,16 @@
-#RSM insert sort recursion recursion
-def fMn(i):
-      n = len(a)
-      if i < n-1:
-            v = a[i+1]
-            fSc(i, v)
-            fMn(i+1)
-def fSc(j, v):
-      if j >=0 and v < a[j]:
-            a[j+1] = a[j]
-            fSc(j-1, v)
-      else:
-            a[j+1] = v
-
-a =[3,0,7,2,5,9,1,8,3,6,4]
+#select sort
+def fFr(i , n):
+      if i < n-1:     
+            fSc(i, n, i)
+            fFr(i+1, n)
+def fSc(j, n, v):
+      if j < n-1:
+            if a[v] > a[j+1]:
+                  a[v], a[j+1] = fSw(a[v], a[j+1])
+            fSc(j+1,n, v)
+def fSw(a,b):
+      return b, a
+a=[3,0,5,1,2,4]
 print(a)
-fMn(0)
+fFr(0, len(a))
 print(a)
-            
