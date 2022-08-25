@@ -1,0 +1,100 @@
+#!/usr/bin/env python3
+
+import sys
+
+graph = [[0, 4, 0, 0, 0, 0, 0, 8, 0],
+    [4, 0, 8, 0, 0, 0, 0, 11, 0],
+    [0, 8, 0, 7, 0, 4, 0, 0, 2],
+    [0, 0, 7, 0, 9, 14, 0, 0, 0],
+    [0, 0, 0, 9, 0, 10, 0, 0, 0],
+    [0, 0, 4, 14, 10, 0, 2, 0, 0],
+    [0, 0, 0, 0, 0, 2, 0, 1, 6],
+    [8, 11, 0, 0, 0, 0, 1, 0, 7],
+    [0, 0, 2, 0, 0, 0, 6, 7, 0]
+    ];
+
+verti = 9
+
+def f_minim_dista(dista, spot_set ):#1
+      global verti
+
+      minim = sys.maxsize
+      minim_index = 0
+      u=0
+      while u < verti :#2
+
+            if dista[u] < minim and spot_set[u] == False:#3
+
+                  minim = dista[u]
+                  minim_index = u
+            #3
+            u+=1
+      #2
+
+      return minim_index
+#1
+
+def f_dijks(sourc) :#1
+
+      global verti
+      dista = [sys.maxsize] * verti
+      dista[sourc] = 0
+      spot_set = [False] * verti
+      x = 0
+      cout = 0
+      while cout < verti:#2
+
+            x = f_minim_dista(dista, spot_set)
+            spot_set[x] = True
+
+            y=0
+            while y < verti:#3
+
+                  if graph[x][y]> 0 and spot_set[y] == False and dista[y]> (dista[x] + graph[x][y]):#4
+                        
+                        dista[y] = dista[x] + graph[x][y]
+
+                  #4
+                  y+=1
+            #3
+            cout+=1
+      #2
+
+      f_print(dista)
+#1
+
+def f_print(dista):#1
+
+      node = 0
+      while node < verti:#2
+
+            print(f"{node= } \t, {dista[node]= }\n")
+            node+=1
+      #2
+#1
+
+f_dijks(0)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
