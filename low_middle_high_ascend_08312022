@@ -1,0 +1,105 @@
+#!/usr/bin/env python3
+
+#get lowest middle high  8/31/2022
+#sort low to mid and mid to high
+
+#sucess     #output is:  low + ->  middl   <- - high
+
+def f_proce(a):#1
+      #L20
+      n = len(a)
+      low = a[0]
+      high = a[0]
+      i=0
+      while i < n: #2
+
+            if low > a[i]:#3
+                  low  = a[i]
+            #3
+
+            if high < a[i]:#3
+                  high = a[i]
+            #3
+
+            i+=1
+
+      #2
+
+      middl = int(high /2)
+      # low +        mid        - high   
+     
+      middl_move_low_value = middl
+      middl_move_low = 0
+      middl_move_low_fix = 0
+
+      middl_move_high_value = middl
+      middl_move_high = n-1
+      middl_move_high_fix = n-1
+      
+      i=0
+      same = 0
+      while i < (n-1):#2
+
+            print(f"L21 {i= }\n")
+            loop = False
+            j=i
+            while j < (n-1) -i: #4
+                  
+                  print(f"L22 {j= } {a[j]= },{middl_move_low_value= }, {middl_move_high_value= }\n")
+                  if a[j] >= low and a[j]<= middl_move_low_value:#3
+                        same = 1
+                        middl_move_low_value = a[j]
+                        middl_move_low = j
+                        loop = True
+                  #3
+
+                  if a[j] >=  middl_move_high_value and a[j]<= high:#2
+                        if same != 1:#3
+
+                              middl_move_high_value = a[j]
+                              middl_move_high = j
+                              loop = True
+                        #3
+                  #2
+
+                  same = 0
+                  j+=1
+            #4
+
+            t = a[middl_move_high_fix]
+            a[middl_move_high_fix] = a[middl_move_high]
+            a[middl_move_high] = t
+
+            t = a[middl_move_low_fix]
+            a[middl_move_low_fix] = a[middl_move_low]
+            a[middl_move_low] = t
+
+            i+=1
+            middl_move_low_value = middl
+            middl_move_low_fix = i          
+            middl_move_low = middl_move_low_fix
+
+            middl_move_high_value = middl
+            middl_move_high_fix -=1
+            middl_move_high = middl_move_high_fix
+            print(f"L23 {a= }\n")
+
+            if loop != True: #3
+                  break
+            #3
+      #2        
+
+     
+      print(f"{low= }, {middl= }, {high= }\n")
+
+#1
+
+a = [2,9,3,0,2,6,8,7,3,1]
+
+#L10
+print(f"L10 {a= }\n")
+
+f_proce(a)
+#L10
+print(f"L10 {a= }\n")
+
