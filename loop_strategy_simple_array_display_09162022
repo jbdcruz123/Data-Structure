@@ -1,0 +1,81 @@
+#!/usr/bin/env python3
+
+#create design of this, design of salin ng data thru loop
+#param[ 0 1 2 3 4] 0 1 solo, start 2 multi [i][j][k], 3 4  [i][j] 
+
+#RSM 9/16/2022
+#assigning output mechanically using index of array type(python coding native codeL)
+
+param = ["first","second", [ [2,2],[3,4],[4,4] ], [4,12,16], [0,1,16] ]
+
+print(f"input: {param= }\n")
+
+strin = "display testing start: \n\n"
+i =2
+n_i  = len(param)
+while i < n_i :#4
+
+      if i == 2 :#10
+            
+            j=0
+            n_j = len(param[i])
+
+            while j < n_j : #5
+
+                  k=0
+                  n_k = len(param[i][j])
+
+                  while k < n_k :# 7
+
+                        strin = strin + str(param[i][j][k]) 
+
+                        if k == 0 :#8
+
+                              strin = strin + " * "
+
+                        #8 
+ 
+                        k+=1
+                  #7
+                  
+                  #followup na data sa dulo ung param[3] at param[4]    
+                  l=3
+                  while l < n_i:#11
+
+                        if l == 3:#12
+                              strin = strin + " = right " + str(param[l][j])
+                        elif l == 4: #12
+
+                              strin = strin + ", player " + str(param[l][j]) +  "\n"
+                        #12
+
+                        l+=1
+                  #11
+
+                  j+=1
+            #5 
+
+      #10
+         
+      #ignore i=3 and i=4       
+      i+=1
+#4
+
+strin = strin + f"Ang tumama na sagot ay: {param[1]}\n\ngusto mo bang ituloy Y/N\n\n"
+
+print(f"result: {strin } \n")
+
+#output is
+
+"""
+result: display testing start: 
+
+2 * 2 = right 4, player 0
+3 * 4 = right 12, player 1
+4 * 4 = right 16, player 16
+Ang tumama na sagot ay: second
+
+gusto mo bang ituloy Y/N
+"""
+
+
